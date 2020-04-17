@@ -7,17 +7,21 @@ import theme from './utils/theme';
 
 // Views
 import HomeView from './views/HomeView';
+import LoginView from './views/LoginView';
+import RegisterView from './views/RegisterView';
 
 const Stack = createStackNavigator();
 
-function StackNavigation() {
+function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Register">
+        <Stack.Screen name="Login" component={LoginView} />
+        <Stack.Screen name="Register" component={RegisterView} />
         <Stack.Screen name="Home" component={HomeView} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default StackNavigation;
+export default Navigation;
