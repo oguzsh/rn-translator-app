@@ -7,7 +7,7 @@ import ContainerCenter from '../components/ContainerCenter';
 import Text from '../components/Text';
 import Input from '../components/Input';
 import PasswordInput from '../components/PasswordInput';
-import LoginLogo from '../components/LoginLogo';
+import RegisterLogo from '../components/LoginLogo';
 
 import firebase from '../database/firebaseDb';
 
@@ -67,7 +67,7 @@ function RegisterView({navigation}) {
         </ContainerCenter>
       ) : (
         <ContainerCenter>
-          <LoginLogo />
+          <RegisterLogo />
 
           <Container>
             <Text fontSize={24} fontFamily={theme.typography.bold} mt={30}>
