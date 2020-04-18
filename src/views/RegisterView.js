@@ -1,25 +1,32 @@
-import React, {useState, useCallback} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  Alert,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
+import React, {useState} from 'react';
+import {Alert, SafeAreaView, ActivityIndicator} from 'react-native';
+
+import ActionButton, {ActionButtonTitle} from '../components/ActionButton';
+import Container from '../components/Container';
+import ContainerCenter from '../components/ContainerCenter';
+import Text from '../components/Text';
+import Input from '../components/Input';
+import PasswordInput from '../components/PasswordInput';
+import LoginLogo from '../components/LoginLogo';
+
 import firebase from '../database/firebaseDb';
 
+import theme from '../utils/theme';
+
 function RegisterView({navigation}) {
-  const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [passwordToggle, setPasswordToggle] = useState(true);
+  const [icon, setIcon] = useState('eye');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
 
   const registerUser = () => {
     if (email === '' && password === '') {
-      Alert.alert('Enter details to signup!');
+      Alert.alert('Please fill in the blanks for sign up');
+    } else if (password !== confirmPassword) {
+      Alert.alert('Your password does not same with confirm password');
     } else {
       setLoading(true);
 
@@ -30,95 +37,98 @@ function RegisterView({navigation}) {
           res.user.updateProfile({
             displayName: displayName,
           });
-          console.log('User registered successfully!');
+          //console.log('User registered successfully!');
           setLoading(false);
           setDisplayName('');
           setEmail('');
           setPassword('');
-          navigation.navigate('Login');
+          setConfirmPassword('');
+          navigation.navigate('Home');
         })
-        .catch((error) => console.log(error));
+        .catch((error) => Alert.alert(error));
     }
+  };
 
-    console.log(displayName);
-    console.log(email);
-    console.log(password);
+  const togglePassword = () => {
+    if (passwordToggle === false) {
+      setPasswordToggle(true);
+      setIcon('eye');
+    } else {
+      setPasswordToggle(false);
+      setIcon('eye-off');
+    }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Container as={SafeAreaView} bg="white" flex={1}>
       {isLoading ? (
-        <ActivityIndicator color={'primary'} />
+        <ContainerCenter>
+          <ActivityIndicator color="blue" size="large" />
+        </ContainerCenter>
       ) : (
-        <View style={styles.container}>
-          <TextInput
-            style={styles.inputStyle}
+        <ContainerCenter>
+          <LoginLogo />
+
+          <Container>
+            <Text fontSize={24} fontFamily={theme.typography.bold} mt={30}>
+              Create Account
+            </Text>
+          </Container>
+
+          <Input
+            m={12}
+            width={300}
+            color="black"
             placeholder="Name"
             value={displayName}
             onChangeText={(val) => setDisplayName(val)}
           />
-          <TextInput
-            style={styles.inputStyle}
+
+          <Input
+            m={12}
+            width={300}
+            color="black"
             placeholder="Email"
+            keyboardType="email-address"
             value={email}
             onChangeText={(val) => setEmail(val)}
           />
-          <TextInput
-            style={styles.inputStyle}
-            placeholder="Password"
-            value={password}
-            onChangeText={(val) => setPassword(val)}
-            maxLength={15}
-            secureTextEntry={true}
+
+          <PasswordInput
+            placeHolder={'Password'}
+            password={password}
+            icon={icon}
+            passwordToggle={passwordToggle}
+            setPassword={setPassword}
+            togglePassword={togglePassword}
           />
-          <Button
-            color="#3740FE"
-            title="Signup"
-            onPress={() => registerUser()}
+
+          <PasswordInput
+            placeHolder={'Confirm Password'}
+            password={confirmPassword}
+            icon={icon}
+            passwordToggle={passwordToggle}
+            setPassword={setConfirmPassword}
+            togglePassword={togglePassword}
           />
+
+          <ActionButton m={15} onPress={() => registerUser()}>
+            <ActionButtonTitle fontSize={theme.smallSize}>
+              Sign Up
+            </ActionButtonTitle>
+          </ActionButton>
+
           <Text
-            style={styles.loginText}
+            fontSize={theme.smallSize}
+            color="blue"
+            mt={15}
             onPress={() => navigation.navigate('Login')}>
-            Already Registered? Click here to login
+            <Text color="grey">Already have an account ?</Text> Sign In
           </Text>
-        </View>
+        </ContainerCenter>
       )}
-    </SafeAreaView>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: 35,
-    backgroundColor: '#fff',
-  },
-  inputStyle: {
-    width: '100%',
-    marginBottom: 15,
-    paddingBottom: 15,
-    alignSelf: 'center',
-    borderColor: '#ccc',
-    borderBottomWidth: 1,
-  },
-  loginText: {
-    color: '#3740FE',
-    marginTop: 25,
-    textAlign: 'center',
-  },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-  },
-});
 
 export default RegisterView;

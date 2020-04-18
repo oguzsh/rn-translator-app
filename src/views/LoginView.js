@@ -4,11 +4,12 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   Alert,
   ActivityIndicator,
   SafeAreaView,
 } from 'react-native';
+
+import Button from '../components/Button';
 
 import firebase from '../database/firebaseDb';
 
@@ -41,7 +42,7 @@ function LoginView({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       {isLoading ? (
-        <ActivityIndicator color={'primary'} />
+        <ActivityIndicator color="blue" />
       ) : (
         <View style={styles.container}>
           <TextInput
@@ -56,7 +57,7 @@ function LoginView({navigation}) {
             value={password}
             onChangeText={(val) => setPassword(val)}
           />
-          <Button color="#3740FE" title="Login" onPress={() => userLogin()} />
+          <Button color="blue" title="Login" onPress={() => userLogin()} />
           <Text
             style={styles.loginText}
             onPress={() => navigation.navigate('Register')}>

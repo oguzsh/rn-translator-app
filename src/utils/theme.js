@@ -10,7 +10,14 @@ const colors = {
   black: '#1C1717',
 };
 
+const typography = {
+  bold: 'Roboto-Bold',
+  medium: 'Roboto-Medium',
+  regular: 'Roboto-Regular',
+};
+
 export default {
+  typography,
   sizes,
   colors,
 };

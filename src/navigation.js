@@ -16,8 +16,16 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Register">
-        <Stack.Screen name="Login" component={LoginView} />
-        <Stack.Screen name="Register" component={RegisterView} />
+        <Stack.Screen
+          name="Login"
+          component={LoginView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterView}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name="Home" component={HomeView} />
       </Stack.Navigator>
     </NavigationContainer>
