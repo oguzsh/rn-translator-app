@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://i.ibb.co/dg2r0rv/Group-328.png" alt="Logo" width="100%">
+    <img src="design.png" alt="Logo" width="100%">
 </div>
 
 # Translator App
