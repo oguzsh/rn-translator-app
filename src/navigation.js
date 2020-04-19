@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Register">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Login"
           component={LoginView}
@@ -30,7 +30,22 @@ function Navigation() {
           component={ForgotPasswordView}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Home" component={HomeView} />
+
+        <Stack.Screen
+          name="Home"
+          options={{
+            title: 'TRANSLATE',
+            headerStyle: {
+              elevation: 0,
+            },
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontWeight: 'regular',
+              color: '#536DFE',
+            },
+          }}
+          component={HomeView}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

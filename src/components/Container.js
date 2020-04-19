@@ -11,7 +11,7 @@ import {
 } from 'styled-system';
 
 const Container = styled(View)(
-  compose(compose, color, size, space, border, flexbox, borderRadiu),
+  compose(color, size, space, border, flexbox, borderRadiu),
 );
 
 export default Container;
