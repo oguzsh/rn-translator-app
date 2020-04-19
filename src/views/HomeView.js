@@ -1,19 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  SafeAreaView,
-  Alert,
-  Button,
-  View,
-  StyleSheet,
-} from 'react-native';
+import React from 'react';
+import {Alert, SafeAreaView} from 'react-native';
+
+import Container from '../components/Container';
+import LanguagePicker from '../components/LanguagePicker';
+import Input from '../components/Input';
 
 import firebase from '../database/firebaseDb';
 
 function HomeView({navigation}) {
-  const [uid, setUID] = useState('');
-  const [displayName, setDisplayName] = useState('');
-
+  // TODO : Sign Out
   const signOut = () => {
     firebase
       .auth()
@@ -24,32 +19,37 @@ function HomeView({navigation}) {
       .catch((error) => Alert(error));
   };
 
-  useEffect(() => {
-    setDisplayName(firebase.auth().currentUser.displayName);
-    setUID(firebase.auth().currentUser.uid);
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle}>Hello, {displayName}</Text>
-      <Button color="#3740FE" title="Logout" onPress={() => signOut()} />
-    </View>
+    <Container as={SafeAreaView} bg="white">
+      <Container mt={20}>
+        <LanguagePicker placeholder={'en'} />
+        <Input
+          ml={15}
+          mr={15}
+          width={350}
+          fontSize={28}
+          color="black"
+          borderBottomWidth={0}
+          height={100}
+          placeholder="Tap to enter text"
+        />
+      </Container>
+
+      <Container mt={20}>
+        <LanguagePicker placeholder={'tr'} />
+        <Input
+          ml={15}
+          mr={15}
+          width={350}
+          fontSize={28}
+          color="black"
+          borderBottomWidth={0}
+          height={100}
+          placeholder="Tap to enter text"
+        />
+      </Container>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 35,
-    backgroundColor: '#fff',
-  },
-  textStyle: {
-    fontSize: 15,
-    marginBottom: 20,
-  },
-});
 
 export default HomeView;
