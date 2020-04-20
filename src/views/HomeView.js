@@ -70,6 +70,17 @@ function HomeView({navigation}) {
         />
       </Container>
 
+      <Container
+        flexDirection="row"
+        justifyContent="space-between"
+        alignContent="center">
+        <Container bg="black" mt={10} width={170} height={3} />
+        <IconButton py={-20}>
+          <Icon name="refresh-ccw" size={28} />
+        </IconButton>
+        <Container bg="black" mt={10} width={170} height={3} />
+      </Container>
+
       <Container mt={20}>
         <LanguagePicker placeholder={pickerB} func={setPickerB} />
         <Input
