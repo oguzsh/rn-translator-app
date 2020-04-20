@@ -4,7 +4,7 @@ import Container from './Container';
 import IconButton from './IconButton';
 import Icon from 'react-native-vector-icons/Feather';
 
-function LoginLogo({setPickerA, setPickerB, pickerA, pickerB}) {
+function SwapLanguages({setPickerA, setPickerB, pickerA, pickerB}) {
   return (
     <Container
       flexDirection="row"
@@ -37,4 +37,4 @@ function LoginLogo({setPickerA, setPickerB, pickerA, pickerB}) {
   );
 }
 
-export default LoginLogo;
+export default SwapLanguages;

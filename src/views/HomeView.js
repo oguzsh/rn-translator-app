@@ -6,8 +6,11 @@ import Container from '../components/Container';
 import LanguagePicker from '../components/LanguagePicker';
 import Input from '../components/Input';
 import SwapLanguages from '../components/SwapLanguages';
+import MicButton from '../components/MicButton';
 
 import firebase from '../database/firebaseDb';
+
+import Voice from '@react-native-community/voice';
 
 function HomeView({navigation}) {
   const [translateText, setTranslateText] = useState('');
@@ -52,7 +55,7 @@ function HomeView({navigation}) {
   };
 
   return (
-    <Container as={SafeAreaView} bg="white">
+    <Container as={SafeAreaView} bg="white" flex={1}>
       <Container mt={20}>
         <LanguagePicker
           placeholder={pickerA}
@@ -98,6 +101,10 @@ function HomeView({navigation}) {
           editable={false}
           value={resultText}
         />
+      </Container>
+
+      <Container py={150}>
+        <MicButton />
       </Container>
     </Container>
   );
