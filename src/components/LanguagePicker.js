@@ -10,7 +10,7 @@ import {CustomPicker} from 'react-native-custom-picker';
 
 import theme from '../utils/theme';
 
-function LanguagePicker({placeholder}) {
+function LanguagePicker({placeholder, func}) {
   const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,6 +23,10 @@ function LanguagePicker({placeholder}) {
         setLoading(false);
         setLanguages(resJson.langs);
       });
+  };
+
+  const getKeyByValue = (object, value) => {
+    return Object.keys(object).find((key) => object[key] === value);
   };
 
   useEffect(() => {
@@ -91,7 +95,7 @@ function LanguagePicker({placeholder}) {
           optionTemplate={renderOption}
           headerTemplate={renderHeader}
           onValueChange={(value) => {
-            Alert.alert('Selected Item', value || 'No item were selected!');
+            func(getKeyByValue(languages, value));
           }}
         />
       )}
