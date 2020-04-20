@@ -6422,6 +6422,11 @@ react-native-svg@^12.1.0:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
 
+react-native-tts@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-tts/-/react-native-tts-3.1.1.tgz#b3eb4133432c70beb6dfb33685737c8cab441e02"
+  integrity sha512-EGwapFt1CMBopawc8WvpHRv/oXZnOQPuS5ZHrKp0zpz7Kosb6aN1cyj6YSUX2LzcqP6glhrvCPS+PPkW2yMbRQ==
+
 react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"

@@ -8,9 +8,11 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import {CustomPicker} from 'react-native-custom-picker';
 
+import Tts from 'react-native-tts';
+
 import theme from '../utils/theme';
 
-function LanguagePicker({placeholder, func}) {
+function LanguagePicker({placeholder, text, func}) {
   const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +29,10 @@ function LanguagePicker({placeholder, func}) {
 
   const getKeyByValue = (object, value) => {
     return Object.keys(object).find((key) => object[key] === value);
+  };
+
+  const sayText = () => {
+    Tts.speak(text);
   };
 
   useEffect(() => {
@@ -103,7 +109,8 @@ function LanguagePicker({placeholder, func}) {
         p={2}
         borderWidth={2}
         borderRadius={30}
-        borderColor="lightBlue">
+        borderColor="lightBlue"
+        onPress={() => sayText()}>
         <Icon name="volume-2" color={theme.colors.blue} size={24} />
       </IconButton>
     </Container>

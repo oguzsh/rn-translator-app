@@ -38,6 +38,7 @@
         "firebase": "^7.14.1",
         "jest": "^25.3.0",
         "metro-react-native-babel-preset": "^0.59.0",
+        "react-native-tts": "^3.1.1",
         "react-test-renderer": "16.11.0"
     },
     "jest": {

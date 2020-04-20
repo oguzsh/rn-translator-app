@@ -54,7 +54,11 @@ function HomeView({navigation}) {
   return (
     <Container as={SafeAreaView} bg="white">
       <Container mt={20}>
-        <LanguagePicker placeholder={pickerA} func={setPickerA} />
+        <LanguagePicker
+          placeholder={pickerA}
+          text={translateText}
+          func={setPickerA}
+        />
         <Input
           ml={15}
           mr={15}
@@ -77,7 +81,11 @@ function HomeView({navigation}) {
       />
 
       <Container mt={20}>
-        <LanguagePicker placeholder={pickerB} func={setPickerB} />
+        <LanguagePicker
+          placeholder={pickerB}
+          text={resultText}
+          func={setPickerB}
+        />
         <Input
           ml={15}
           mr={15}
