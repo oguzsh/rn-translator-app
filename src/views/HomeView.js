@@ -5,8 +5,7 @@ import {debounce} from 'lodash';
 import Container from '../components/Container';
 import LanguagePicker from '../components/LanguagePicker';
 import Input from '../components/Input';
-import IconButton from '../components/IconButton';
-import Icon from 'react-native-vector-icons/Feather';
+import SwapLanguages from '../components/SwapLanguages';
 
 import firebase from '../database/firebaseDb';
 
@@ -70,30 +69,12 @@ function HomeView({navigation}) {
         />
       </Container>
 
-      <Container
-        flexDirection="row"
-        justifyContent="space-between"
-        alignContent="center">
-        <Container bg="lightGrey" mt={25} width={180} height={4} />
-        <IconButton
-          bg="white"
-          p={15}
-          borderRadius={30}
-          style={{
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 4,
-            },
-            shadowOpacity: 0.5,
-            shadowRadius: 4,
-
-            elevation: 8,
-          }}>
-          <Icon name="refresh-ccw" size={24} color="grey" />
-        </IconButton>
-        <Container bg="lightGrey" mt={25} width={180} height={4} />
-      </Container>
+      <SwapLanguages
+        setPickerA={setPickerA}
+        setPickerB={setPickerB}
+        pickerA={pickerA}
+        pickerB={pickerB}
+      />
 
       <Container mt={20}>
         <LanguagePicker placeholder={pickerB} func={setPickerB} />
