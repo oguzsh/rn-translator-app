@@ -99,7 +99,11 @@ function LanguagePicker({placeholder, func}) {
           }}
         />
       )}
-      <IconButton>
+      <IconButton
+        p={2}
+        borderWidth={2}
+        borderRadius={30}
+        borderColor="lightBlue">
         <Icon name="volume-2" color={theme.colors.blue} size={24} />
       </IconButton>
     </Container>
