@@ -10,11 +10,10 @@ import MicButton from '../components/MicButton';
 
 import firebase from '../database/firebaseDb';
 
-import Voice from '@react-native-community/voice';
-
 function HomeView({navigation}) {
   const [translateText, setTranslateText] = useState('');
   const [resultText, setResultText] = useState('');
+  const [words, setWords] = useState([]);
   const [pickerA, setPickerA] = useState('en');
   const [pickerB, setPickerB] = useState('tr');
 
@@ -42,7 +41,12 @@ function HomeView({navigation}) {
 
   useEffect(() => {
     whenUserStopTyping();
+    words ? words.map((word) => setTranslateText(word)) : null;
   }, [handleChange]);
+
+  useEffect(() => {
+    setWords([]);
+  }, [translateText]);
 
   const signOut = () => {
     firebase
@@ -104,7 +108,7 @@ function HomeView({navigation}) {
       </Container>
 
       <Container py={150}>
-        <MicButton />
+        <MicButton lang={pickerA} func={setWords} />
       </Container>
     </Container>
   );
