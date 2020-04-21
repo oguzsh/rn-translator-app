@@ -7,6 +7,9 @@ import LanguagePicker from '../components/LanguagePicker';
 import Input from '../components/Input';
 import SwapLanguages from '../components/SwapLanguages';
 import MicButton from '../components/MicButton';
+import IconButton from '../components/IconButton';
+
+import Icon from 'react-native-vector-icons/Feather';
 
 import firebase from '../database/firebaseDb';
 
@@ -107,8 +110,11 @@ function HomeView({navigation}) {
         />
       </Container>
 
-      <Container py={150}>
+      <Container py={150} flexDirection="row">
         <MicButton lang={pickerA} func={setWords} />
+        <IconButton m={20} onPress={() => signOut()}>
+          <Icon name="log-out" color="black" size={24} />
+        </IconButton>
       </Container>
     </Container>
   );
