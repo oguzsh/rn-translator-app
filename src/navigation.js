@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={LoginView}
@@ -40,7 +40,7 @@ function Navigation() {
             },
             headerTitleAlign: 'center',
             headerTitleStyle: {
-              fontWeight: 'regular',
+              fontWeight: 'normal',
               color: '#536DFE',
             },
           }}
