@@ -18,6 +18,8 @@ The repository contains:
 - a [Firebase](https://firebase.google.com/)
 - a [Styled System](https://styled-system.com/)
 - a [Styled Components](https://styled-components.com/)
+- a [React Native Voice](https://github.com/react-native-community/voice)
+- a [React Native TTS](https://github.com/ak1394/react-native-tts)
 - a [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 - a [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - a [Yandex Translate API](https://tech.yandex.com/translate/)
